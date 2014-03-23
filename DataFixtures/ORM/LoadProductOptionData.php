@@ -14,11 +14,11 @@ namespace Sylius\Bundle\FixturesBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
- * Default assortment product options to play with sandbox.
+ * Default product options to play with Sylius.
  *
  * @author Paweł Jędrzejewski <pjedrzejewski@diweb.pl>
  */
-class LoadOptionsData extends DataFixture
+class LoadProductOptionData extends DataFixture
 {
     /**
      * {@inheritdoc}
@@ -62,7 +62,7 @@ class LoadOptionsData extends DataFixture
     protected function createOption($name, $presentation, array $values)
     {
         $option = $this
-            ->getOptionRepository()
+            ->getProductOptionRepository()
             ->createNew()
         ;
 
@@ -70,7 +70,7 @@ class LoadOptionsData extends DataFixture
         $option->setPresentation($presentation);
 
         foreach ($values as $text) {
-            $value = $this->getOptionValueRepository()->createNew();
+            $value = $this->getProductOptionValueRepository()->createNew();
             $value->setValue($text);
 
             $option->addValue($value);

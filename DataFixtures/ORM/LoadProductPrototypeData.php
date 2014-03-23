@@ -18,7 +18,7 @@ use Doctrine\Common\Persistence\ObjectManager;
  *
  * @author Paweł Jędrzejewski <pjedrzejewski@diweb.pl>
  */
-class LoadPrototypesData extends DataFixture
+class LoadProductPrototypeData extends DataFixture
 {
     /**
      * {@inheritdoc}
@@ -57,7 +57,7 @@ class LoadPrototypesData extends DataFixture
      */
     protected function createPrototype($name, array $options, array $properties)
     {
-        $repository = $this->getPrototypeRepository();
+        $repository = $this->getProductPrototypeRepository();
 
         $prototype = $repository->createNew();
         $prototype->setName($name);
@@ -65,8 +65,8 @@ class LoadPrototypesData extends DataFixture
         foreach ($options as $option) {
             $prototype->addOption($this->getReference('Sylius.Option.'.$option));
         }
-        foreach ($properties as $property) {
-            $prototype->addProperty($this->getReference('Sylius.Property.'.$property));
+        foreach ($properties as $attribute) {
+            $prototype->addAttribute($this->getReference('Sylius.Attribute.'.$attribute));
         }
 
         $this->setReference('Sylius.Prototype.'.$name, $prototype);
