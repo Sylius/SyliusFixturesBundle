@@ -1,0 +1,8 @@
+includes:
+	- vendor/proget-hq/phpstan-phpspec/extension.neon
+
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    specDir: 'spec/'
+    ignoreErrors:
+        - '/^PHPDoc tag \@param for parameter \$collaborators with type array<int, PhpSpec\\Wrapper\\Collaborator> is incompatible with native type/'
