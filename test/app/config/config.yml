@@ -1,5 +1,5 @@
 imports:
-    - { resource: "@SyliusFixturesBundle/test/app/config/parameters.yml" }
+    - { resource: "parameters.yml" }
 
 framework:
     assets: false

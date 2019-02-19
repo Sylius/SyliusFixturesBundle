@@ -46,11 +46,12 @@
         "polishsymfonycommunity/symfony-mocker-container": "^1.0"
     },
     "autoload": {
-        "psr-4": { "Sylius\\Bundle\\FixturesBundle\\": "" }
+        "psr-4": { "Sylius\\Bundle\\FixturesBundle\\": "src/" }
     },
     "autoload-dev": {
         "psr-4": {
-            "Sylius\\Bundle\\FixturesBundle\\spec\\": "spec/"
+            "Sylius\\Bundle\\FixturesBundle\\spec\\": "spec/",
+            "Sylius\\Bundle\\FixturesBundle\\Tests\\": "tests/"
         },
         "classmap": ["test/app/AppKernel.php"]
     },
