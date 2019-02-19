@@ -35,18 +35,10 @@
         "matthiasnoback/symfony-config-test": "^4.0",
         "matthiasnoback/symfony-dependency-injection-test": "^3.0",
         "phpspec/phpspec": "^5.0",
+        "phpstan/phpstan-phpunit": "^0.10",
         "phpstan/phpstan-shim": "^0.10",
         "phpunit/phpunit": "^7.0",
-        "polishsymfonycommunity/symfony-mocker-container": "^1.0",
-        "symfony/browser-kit": "^3.4|^4.1.1",
-        "symfony/dependency-injection": "^3.4|^4.1.1",
-        "symfony/security-csrf": "^3.4|^4.1.1",
-        "symfony/templating": "^3.4|^4.1.1",
-        "symfony/translation": "^3.4|^4.1.1",
-        "symfony/twig-bundle": "^3.4|^4.1.1",
-        "twig/twig": "^2.0",
-        "proget-hq/phpstan-phpspec": "^0.1.1",
-        "phpstan/phpstan-phpunit": "^0.10"
+        "proget-hq/phpstan-phpspec": "^0.1.1"
     },
     "autoload": {
         "psr-4": { "Sylius\\Bundle\\FixturesBundle\\": "src/" }
@@ -55,8 +47,7 @@
         "psr-4": {
             "spec\\Sylius\\Bundle\\FixturesBundle\\": "spec/",
             "Sylius\\Bundle\\FixturesBundle\\Tests\\": "tests/"
-        },
-        "classmap": ["test/app/AppKernel.php"]
+        }
     },
     "scripts": {
         "analyse": [

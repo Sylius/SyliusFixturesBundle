@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sylius\Bundle\FixturesBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
+use PHPUnit\Framework\Assert;
 use Sylius\Bundle\FixturesBundle\DependencyInjection\SyliusFixturesExtension;
 
 final class SyliusFixturesExtensionTest extends AbstractExtensionTestCase
@@ -23,6 +24,8 @@ final class SyliusFixturesExtensionTest extends AbstractExtensionTestCase
      */
     public function it_does_not_crash_if_no_suite_is_configured(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $this->load();
     }
 
@@ -38,8 +41,8 @@ final class SyliusFixturesExtensionTest extends AbstractExtensionTestCase
         $suiteRegistryDefinition = $this->container->findDefinition('sylius_fixtures.suite_registry');
         $suiteMethodCall = $suiteRegistryDefinition->getMethodCalls()[0];
 
-        static::assertSame('addSuite', $suiteMethodCall[0]);
-        static::assertSame('suite_name', $suiteMethodCall[1][0]);
+        Assert::assertSame('addSuite', $suiteMethodCall[0]);
+        Assert::assertSame('suite_name', $suiteMethodCall[1][0]);
     }
 
     /**
