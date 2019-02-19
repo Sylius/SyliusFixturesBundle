@@ -68,11 +68,19 @@ final class FixturesLoadCommand extends ContainerAwareCommand
 
     private function getSuiteRegistry(): SuiteRegistryInterface
     {
-        return $this->getContainer()->get('sylius_fixtures.suite_registry');
+        $suiteRegistry = $this->getContainer()->get('sylius_fixtures.suite_registry');
+
+        assert($suiteRegistry instanceof SuiteRegistryInterface);
+
+        return $suiteRegistry;
     }
 
     private function getSuiteLoader(): SuiteLoaderInterface
     {
-        return $this->getContainer()->get('sylius_fixtures.suite_loader');
+        $suiteLoader = $this->getContainer()->get('sylius_fixtures.suite_loader');
+
+        assert($suiteLoader instanceof SuiteLoaderInterface);
+
+        return $suiteLoader;
     }
 }
