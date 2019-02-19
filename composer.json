@@ -45,7 +45,8 @@
         "symfony/translation": "^3.4|^4.1.1",
         "symfony/twig-bundle": "^3.4|^4.1.1",
         "twig/twig": "^2.0",
-        "proget-hq/phpstan-phpspec": "^0.1.1"
+        "proget-hq/phpstan-phpspec": "^0.1.1",
+        "phpstan/phpstan-phpunit": "^0.10"
     },
     "autoload": {
         "psr-4": { "Sylius\\Bundle\\FixturesBundle\\": "src/" }
@@ -59,7 +60,7 @@
     },
     "scripts": {
         "analyse": [
-            "@php vendor/bin/phpstan analyse --ansi -c phpstan.neon -l 2 spec src tests"
+            "@php vendor/bin/phpstan analyse --ansi -c phpstan.neon -l 5 spec src tests"
         ]
     },
     "extra": {
