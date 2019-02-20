@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\FixturesBundle\Tests;
+namespace Sylius\Bundle\FixturesBundle\Tests\Smoke;
 
 use PHPUnit\Framework\Assert;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-final class SyliusFixturesBundleTest extends WebTestCase
+final class SyliusFixturesBundleTest extends KernelTestCase
 {
     /**
      * @test
@@ -26,12 +26,12 @@ final class SyliusFixturesBundleTest extends WebTestCase
     public function its_services_are_initializable(): void
     {
         /** @var ContainerBuilder $container */
-        $container = self::createClient()->getContainer();
+        $container = self::bootKernel()->getContainer();
 
         $services = $container->getServiceIds();
 
         $services = array_filter($services, function (string $serviceId): bool {
-            return 0 === strpos($serviceId, 'sylius.');
+            return 0 === strpos($serviceId, 'sylius_fixtures.') || 0 === strpos($serviceId, 'Sylius\\Bundle\\FixturesBundle\\');
         });
 
         foreach ($services as $id) {

@@ -1,0 +1,13 @@
+framework:
+    secret: "Three can keep a secret, if two of them are dead."
+    test: ~
+
+doctrine:
+    dbal:
+        driver: "pdo_sqlite"
+        path: "%kernel.project_dir%/var/db.sql"
+        charset: UTF8
+    orm:
+        entity_managers:
+            default:
+                auto_mapping: true
