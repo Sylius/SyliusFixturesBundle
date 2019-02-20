@@ -47,7 +47,7 @@ final class FixturesLoadCommand extends ContainerAwareCommand
 
             $output->writeln(sprintf(
                 "\n<error>Warning! Loading fixtures will purge your database for the %s environment.</error>\n",
-                $input->getOption('env')
+                $this->getEnvironment()
             ));
 
             if (!$questionHelper->ask($input, $output, new ConfirmationQuestion('Continue? (y/N) ', false))) {
@@ -61,6 +61,9 @@ final class FixturesLoadCommand extends ContainerAwareCommand
     private function loadSuites(InputInterface $input): void
     {
         $suiteName = $input->getArgument('suite');
+
+        assert(is_string($suiteName));
+
         $suite = $this->getSuiteRegistry()->getSuite($suiteName);
 
         $this->getSuiteLoader()->load($suite);
@@ -68,11 +71,24 @@ final class FixturesLoadCommand extends ContainerAwareCommand
 
     private function getSuiteRegistry(): SuiteRegistryInterface
     {
-        return $this->getContainer()->get('sylius_fixtures.suite_registry');
+        $suiteRegistry = $this->getContainer()->get('sylius_fixtures.suite_registry');
+
+        assert($suiteRegistry instanceof SuiteRegistryInterface);
+
+        return $suiteRegistry;
     }
 
     private function getSuiteLoader(): SuiteLoaderInterface
     {
-        return $this->getContainer()->get('sylius_fixtures.suite_loader');
+        $suiteLoader = $this->getContainer()->get('sylius_fixtures.suite_loader');
+
+        assert($suiteLoader instanceof SuiteLoaderInterface);
+
+        return $suiteLoader;
+    }
+
+    private function getEnvironment(): string
+    {
+        return $this->getContainer()->getParameter('kernel.environment');
     }
 }

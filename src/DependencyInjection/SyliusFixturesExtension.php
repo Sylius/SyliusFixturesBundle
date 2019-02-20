@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sylius\Bundle\FixturesBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -21,6 +22,14 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 final class SyliusFixturesExtension extends Extension implements PrependExtensionInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfiguration(array $config, ContainerBuilder $container): ConfigurationInterface
+    {
+        return new Configuration();
+    }
+
     /**
      * {@inheritdoc}
      */

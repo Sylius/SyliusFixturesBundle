@@ -1,0 +1,15 @@
+includes:
+    - vendor/proget-hq/phpstan-phpspec/extension.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    specDir: 'spec/'
+    ignoreErrors:
+        # PHPStan extension bug
+        - '/proget-hq\/phpstan-phpspec\/src\/NodeVisitor\/CollaboratorResolver\.php/'
+
+        # Replaced `'` with `.`, could not figure out how to escape single quotes
+        - '/^Call to function method_exists\(\) with .Symfony\\\\Component…. and .getRootNode. will always evaluate to false\.$/'
