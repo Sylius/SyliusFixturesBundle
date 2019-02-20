@@ -5,12 +5,11 @@
          colors="true"
 >
     <php>
-        <server name="KERNEL_CLASS" value="AppKernel" />
+        <env name="KERNEL_CLASS" value="Sylius\Bundle\FixturesBundle\Tests\Application\Kernel" />
     </php>
 
     <testsuites>
         <testsuite name="SyliusFixturesBundle Test Suite">
-            <directory>./test/</directory>
             <directory>./Tests/</directory>
         </testsuite>
     </testsuites>
