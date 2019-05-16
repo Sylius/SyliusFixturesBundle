@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace spec\Sylius\Bundle\FixturesBundle\Listener;
 
-use Brille24\Core\Listener\Fixture\SuiteLoaderListener;
 use PhpSpec\ObjectBehavior;
 use Sylius\Bundle\FixturesBundle\Listener\SuiteEvent;
+use Sylius\Bundle\FixturesBundle\Listener\SuiteLoaderListener;
 use Sylius\Bundle\FixturesBundle\Loader\SuiteLoaderInterface;
 use Sylius\Bundle\FixturesBundle\Suite\SuiteInterface;
 use Sylius\Bundle\FixturesBundle\Suite\SuiteRegistryInterface;
