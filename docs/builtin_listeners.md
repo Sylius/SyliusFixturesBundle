@@ -2,6 +2,21 @@
 
 **SyliusFixturesBundle** comes with a few useful listeners.
 
+## Suite Loader (`suite_loader`)
+This allows a fixture suite to define other suites which will be loaded **before** the current suite.
+
+```yaml
+sylius_fixtures:
+    suites:
+        my_suite:
+            listener:
+                suite_loader:
+                    options:
+                        - "other_suite" 
+```
+
+This will load the `other_suite` before loading the fixtures from the `my_suite`.
+
 ### Logger (`logger`)
 
 Provides output while running `sylius:fixtures:load` command.
