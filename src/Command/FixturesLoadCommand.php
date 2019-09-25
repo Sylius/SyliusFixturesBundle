@@ -46,7 +46,7 @@ final class FixturesLoadCommand extends ContainerAwareCommand
             $questionHelper = $this->getHelper('question');
 
             $output->writeln(sprintf(
-                "\n<error>Warning! Loading fixtures will purge your database for the %s environment.</error>\n",
+                "\n<error>Warning! Loading fixtures may purge your database for the %s environment (if `orm_purger` is used in your suite).</error>\n",
                 $this->getEnvironment()
             ));
 
