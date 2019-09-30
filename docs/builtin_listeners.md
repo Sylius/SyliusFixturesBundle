@@ -12,7 +12,8 @@ sylius_fixtures:
             listener:
                 suite_loader:
                     options:
-                        - "other_suite" 
+                        suites:
+                            - "other_suite"
 ```
 
 This will load the `other_suite` before loading the fixtures from the `my_suite`.
