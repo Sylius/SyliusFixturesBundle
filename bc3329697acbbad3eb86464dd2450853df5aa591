@@ -1,0 +1,70 @@
+---------------------------------------------------------------------------
+
+by pamil at 2019-05-17T03:36:16Z
+
+I'm not sure if I understand this PR correctly, could you add an example configuration (or add docs for the new feature)?
+
+---------------------------------------------------------------------------
+
+by JakobTolkemit at 2019-05-17T08:23:48Z
+
+It's a suite loader.
+You can add it to the listeners section of a suite to define other fixture suites that should be loaded first.
+
+```yaml
+sylius_fixtures:
+  suites:
+    a:
+      listeners:
+        suite_loader:
+          options:
+            suites:
+            - 'b'
+      fixtures:
+        ...
+    b:
+      fixtures:
+        ...
+```
+In this example, when you want to load the `a` suite, it would load the `b` suite before loading `a`.
+
+---------------------------------------------------------------------------
+
+by mamazu at 2019-05-17T08:35:58Z
+
+Thanks Jakob, I added it to the documentation.
+
+---------------------------------------------------------------------------
+
+by mamazu at 2019-09-30T15:12:06Z
+
+What about this one?
+@pamil
+
+---------------------------------------------------------------------------
+
+by mamazu at 2019-10-01T08:30:02Z
+
+Yeah I thought about this as well. Will be done. But what do you mean with end to end tests?
+
+---------------------------------------------------------------------------
+
+by lchrusciel at 2019-10-01T09:17:27Z
+
+e2e is something we should introduce to this library itself.  We should introduce the mocked application and try to use fixtures inside. Something similar can be found here: https://github.com/Sylius/SyliusResourceBundle/tree/master/src/Bundle/test/src/Tests/Controller or https://github.com/Sylius/SyliusGridBundle/blob/master/src/Bundle/Tests/Functional/GridApiTest.php
+
+But in case of fixtures, I'm thinking about some class creation and fixtures to them and then load + asserting, that they are in the database. The biggest problem is to build a scaffolding for it. Once we will have it, we just need to add example usage for new features.
+
+But it is a separate concern from the root of this PR.
+
+---------------------------------------------------------------------------
+
+by mamazu at 2019-10-01T09:47:50Z
+
+Yeah this could be easily achieved when mocking the database to be in memory and then asserting that certain objects are persisted. But I totally agree that these tests would be quite helpful to see.
+
+---------------------------------------------------------------------------
+
+by lchrusciel at 2020-05-08T10:19:51Z
+
+Thanks, @mamazu! :1st_place_medal:
