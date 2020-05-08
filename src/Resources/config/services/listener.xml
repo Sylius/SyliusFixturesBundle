@@ -18,6 +18,13 @@
         <service id="sylius_fixtures.listener_registry" class="Sylius\Bundle\FixturesBundle\Listener\ListenerRegistry" public="false" />
         <service id="Sylius\Bundle\FixturesBundle\Listener\ListenerRegistryInterface" alias="sylius_fixtures.listener_registry" />
 
+        <service class="Sylius\Bundle\FixturesBundle\Listener\SuiteLoaderListener" id="sylius_fixtures.listener.suite_loader_listener">
+            <argument type="service" id="sylius_fixtures.suite_registry"/>
+            <argument type="service" id="sylius_fixtures.suite_loader"/>
+
+            <tag name="sylius_fixtures.listener"/>
+        </service>
+     
         <service id="sylius_fixtures.listener.logger" class="Sylius\Bundle\FixturesBundle\Listener\LoggerListener" public="false">
             <argument type="service" id="sylius_fixtures.logger" />
             <tag name="sylius_fixtures.listener" />
