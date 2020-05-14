@@ -116,6 +116,23 @@ final class FixtureLoaderTest extends KernelTestCase
     /**
      * @test
      */
+    public function it_loads_the_suite_with_listeners(): void
+    {
+        $this->getLazySuiteRegistry()
+             ->addSuite('sample', [
+                 'fixtures'  => $this->createConfiguration('sample_fixture'),
+                 'listeners' => $this->createConfiguration('logger'),
+             ])
+        ;
+
+        $this->logger->expects($this->exactly(2))->method('notice')->withAnyParameters();
+
+        $this->commandTester->execute(['suite' => 'sample'], ['interactive' => false]);
+    }
+
+    /**
+     * @test
+     */
     public function it_fails_if_no_default_suite_exist(): void
     {
         $this->expectException(SuiteNotFoundException::class);
