@@ -19,7 +19,7 @@ final class FixtureListCommandTest extends KernelTestCase
 
     protected static $container;
 
-    protected function setUp()
+    public function setUp()
     {
         self::$kernel = static::createKernel();
         self::$kernel->boot();
@@ -47,16 +47,6 @@ final class FixtureListCommandTest extends KernelTestCase
         $this->commandTester = new CommandTester($command);
     }
 
-    private function createFixture(string $name, array $options = []): array
-    {
-        return [
-            $name => [
-                'name'    => $name,
-                'options' => $options,
-            ],
-        ];
-    }
-
     /**
      * @test
      */
@@ -74,4 +64,13 @@ Available fixtures:
         );
     }
 
+    private function createFixture(string $name, array $options = []): array
+    {
+        return [
+            $name => [
+                'name'    => $name,
+                'options' => $options,
+            ],
+        ];
+    }
 }

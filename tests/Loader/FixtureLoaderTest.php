@@ -38,7 +38,7 @@ final class FixtureLoaderTest extends KernelTestCase
         return $lazySuiteRegistry;
     }
 
-    protected function setUp()
+    public function setUp()
     {
         self::$kernel = static::createKernel();
         self::$kernel->boot();
@@ -64,16 +64,6 @@ final class FixtureLoaderTest extends KernelTestCase
         $application->add(new FixturesLoadCommand());
         $command = $application->find('sylius:fixtures:load');
         $this->commandTester = new CommandTester($command);
-    }
-
-    private function createConfiguration(string $name, array $options = []): array
-    {
-        return [
-            $name => [
-                'name'    => $name,
-                'options' => $options,
-            ],
-        ];
     }
 
     /**
@@ -126,7 +116,9 @@ final class FixtureLoaderTest extends KernelTestCase
              ])
         ;
 
-        $this->logger->expects($this->exactly(2))->method('notice')->withAnyParameters();
+        /** @var MockObject $logger */
+        $logger = $this->logger;
+        $logger->expects($this->exactly(2))->method('notice')->withAnyParameters();
 
         $this->commandTester->execute(['suite' => 'sample'], ['interactive' => false]);
     }
@@ -162,5 +154,15 @@ final class FixtureLoaderTest extends KernelTestCase
         $this->expectException(SuiteNotFoundException::class);
 
         $this->commandTester->execute([], ['interactive' => false]);
+    }
+
+    private function createConfiguration(string $name, array $options = []): array
+    {
+        return [
+            $name => [
+                'name'    => $name,
+                'options' => $options,
+            ],
+        ];
     }
 }
