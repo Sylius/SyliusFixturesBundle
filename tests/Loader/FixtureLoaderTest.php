@@ -133,6 +133,29 @@ final class FixtureLoaderTest extends KernelTestCase
     /**
      * @test
      */
+    public function it_loads_the_suite_with_suite_loader_listener(): void
+    {
+        $this->getLazySuiteRegistry()
+            ->addSuite('default', [
+                'fixtures'  => $this->createConfiguration('sample_fixture'),
+                'listeners' => [],
+            ]);
+        $this->getLazySuiteRegistry()
+            ->addSuite('sample', [
+                 'fixtures'  => $this->createConfiguration('sample_fixture'),
+                 'listeners' => $this->createConfiguration('suite_loader', ['options' => ['suites' => ['default']]]),
+             ])
+        ;
+
+        $this->commandTester->execute(['suite' => 'sample'], ['interactive' => false]);
+
+        $connection = $this->em->getConnection();
+        $result = $connection->fetchArray('SELECT count(*) FROM testTable WHERE test_column = "test";');
+        $this->assertSame(2, (int)$result[0]);
+    }
+    /**
+     * @test
+     */
     public function it_fails_if_no_default_suite_exist(): void
     {
         $this->expectException(SuiteNotFoundException::class);
@@ -141,5 +164,3 @@ final class FixtureLoaderTest extends KernelTestCase
     }
 
 }
-
-
