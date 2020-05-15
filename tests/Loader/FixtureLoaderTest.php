@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Sylius\Bundle\FixturesBundle\Tests\Loader;
@@ -162,5 +163,4 @@ final class FixtureLoaderTest extends KernelTestCase
 
         $this->commandTester->execute([], ['interactive' => false]);
     }
-
 }
