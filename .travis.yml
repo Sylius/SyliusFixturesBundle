@@ -27,4 +27,4 @@ script:
     - composer analyse
 
     - vendor/bin/phpspec run
-    - vendor/bin/phpunit
+    - vendor/bin/phpunit tests

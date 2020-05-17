@@ -54,6 +54,7 @@ final class SuiteLoaderListener extends AbstractListener implements BeforeSuiteL
     {
         $optionsNode->children()
             ->arrayNode('suites')
+                ->requiresAtLeastOneElement()
                 ->performNoDeepMerging()
                 ->prototype('scalar')
             ->end();
