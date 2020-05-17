@@ -1,5 +1,16 @@
 ## CHANGELOG FOR `1.5.x`
 
+### v1.5.1 (2020-05-17)
+
+#### TL;DR
+
+- Fixed possibility to chain fixture suites - service definition added
+
+#### Details
+
+### Fixed
+- [#26](https://github.com/Sylius/SyliusFixturesBundle/issues/26) Tests ([@mamazu](https://github.com/mamazu))
+
 ### v1.5.0 (2020-05-08)
 
 #### TL;DR
