@@ -15,12 +15,30 @@ namespace Sylius\Bundle\FixturesBundle\Command;
 
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureRegistryInterface;
 use Sylius\Bundle\FixturesBundle\Suite\SuiteRegistryInterface;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class FixturesListCommand extends ContainerAwareCommand
+final class FixturesListCommand extends Command
 {
+    /**
+     * @var SuiteRegistryInterface
+     */
+    private $suiteRegistry;
+
+    /**
+     * @var FixtureRegistryInterface
+     */
+    private $fixtureRegistry;
+
+    public function __construct(SuiteRegistryInterface $suiteRegistry, FixtureRegistryInterface $fixtureRegistry)
+    {
+        parent::__construct(null);
+
+        $this->suiteRegistry = $suiteRegistry;
+        $this->fixtureRegistry = $fixtureRegistry;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -35,15 +53,17 @@ final class FixturesListCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->listSuites($output);
         $this->listFixtures($output);
+
+        return 0;
     }
 
     private function listSuites(OutputInterface $output): void
     {
-        $suites = $this->getSuiteRegistry()->getSuites();
+        $suites = $this->suiteRegistry->getSuites();
 
         $output->writeln('Available suites:');
 
@@ -54,30 +74,12 @@ final class FixturesListCommand extends ContainerAwareCommand
 
     private function listFixtures(OutputInterface $output): void
     {
-        $fixtures = $this->getFixtureRegistry()->getFixtures();
+        $fixtures = $this->fixtureRegistry->getFixtures();
 
         $output->writeln('Available fixtures:');
 
         foreach ($fixtures as $name => $fixture) {
             $output->writeln(' - ' . $name);
         }
-    }
-
-    private function getSuiteRegistry(): SuiteRegistryInterface
-    {
-        $suiteRegistry = $this->getContainer()->get('sylius_fixtures.suite_registry');
-
-        assert($suiteRegistry instanceof SuiteRegistryInterface);
-
-        return $suiteRegistry;
-    }
-
-    private function getFixtureRegistry(): FixtureRegistryInterface
-    {
-        $fixtureRegistry = $this->getContainer()->get('sylius_fixtures.fixture_registry');
-
-        assert($fixtureRegistry instanceof FixtureRegistryInterface);
-
-        return $fixtureRegistry;
     }
 }

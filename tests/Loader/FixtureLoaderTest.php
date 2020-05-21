@@ -38,7 +38,7 @@ final class FixtureLoaderTest extends KernelTestCase
         return $lazySuiteRegistry;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         self::$kernel = static::createKernel();
         self::$kernel->boot();
@@ -61,7 +61,11 @@ final class FixtureLoaderTest extends KernelTestCase
         $registry->addFixture(new SampleFixture($this->em));
 
         $application = new Application(self::$kernel);
-        $application->add(new FixturesLoadCommand());
+        $application->add(new FixturesLoadCommand(
+            self::$container->get('sylius_fixtures.suite_registry'),
+            self::$container->get('sylius_fixtures.suite_loader'),
+            self::$container->getParameter('kernel.environment')
+        ));
         $command = $application->find('sylius:fixtures:load');
         $this->commandTester = new CommandTester($command);
     }

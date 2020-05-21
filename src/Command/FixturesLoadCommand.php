@@ -15,15 +15,39 @@ namespace Sylius\Bundle\FixturesBundle\Command;
 
 use Sylius\Bundle\FixturesBundle\Loader\SuiteLoaderInterface;
 use Sylius\Bundle\FixturesBundle\Suite\SuiteRegistryInterface;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 
-final class FixturesLoadCommand extends ContainerAwareCommand
+final class FixturesLoadCommand extends Command
 {
+    /**
+     * @var SuiteRegistryInterface
+     */
+    private $suiteRegistry;
+
+    /**
+     * @var SuiteLoaderInterface
+     */
+    private $suiteLoader;
+
+    /**
+     * @var string
+     */
+    private $environment;
+
+    public function __construct(SuiteRegistryInterface $suiteRegistry, SuiteLoaderInterface $suiteLoader, string $environment)
+    {
+        parent::__construct(null);
+
+        $this->suiteRegistry = $suiteRegistry;
+        $this->suiteLoader = $suiteLoader;
+        $this->environment = $environment;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -39,7 +63,7 @@ final class FixturesLoadCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if ($input->isInteractive()) {
             /** @var QuestionHelper $questionHelper */
@@ -47,15 +71,17 @@ final class FixturesLoadCommand extends ContainerAwareCommand
 
             $output->writeln(sprintf(
                 "\n<error>Warning! Loading fixtures may purge your database for the %s environment (if `orm_purger` is used in your suite).</error>\n",
-                $this->getEnvironment()
+                $this->environment
             ));
 
             if (!$questionHelper->ask($input, $output, new ConfirmationQuestion('Continue? (y/N) ', false))) {
-                return;
+                return 1;
             }
         }
 
         $this->loadSuites($input);
+
+        return 0;
     }
 
     private function loadSuites(InputInterface $input): void
@@ -64,31 +90,8 @@ final class FixturesLoadCommand extends ContainerAwareCommand
 
         assert(is_string($suiteName));
 
-        $suite = $this->getSuiteRegistry()->getSuite($suiteName);
+        $suite = $this->suiteRegistry->getSuite($suiteName);
 
-        $this->getSuiteLoader()->load($suite);
-    }
-
-    private function getSuiteRegistry(): SuiteRegistryInterface
-    {
-        $suiteRegistry = $this->getContainer()->get('sylius_fixtures.suite_registry');
-
-        assert($suiteRegistry instanceof SuiteRegistryInterface);
-
-        return $suiteRegistry;
-    }
-
-    private function getSuiteLoader(): SuiteLoaderInterface
-    {
-        $suiteLoader = $this->getContainer()->get('sylius_fixtures.suite_loader');
-
-        assert($suiteLoader instanceof SuiteLoaderInterface);
-
-        return $suiteLoader;
-    }
-
-    private function getEnvironment(): string
-    {
-        return $this->getContainer()->getParameter('kernel.environment');
+        $this->suiteLoader->load($suite);
     }
 }

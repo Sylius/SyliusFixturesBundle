@@ -24,18 +24,10 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        if (method_exists(TreeBuilder::class, 'getRootNode')) {
-            $treeBuilder = new TreeBuilder('sylius_fixtures');
+        $treeBuilder = new TreeBuilder('sylius_fixtures');
 
-            /** @var ArrayNodeDefinition $rootNode */
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $treeBuilder = new TreeBuilder();
-
-            /** @var ArrayNodeDefinition $rootNode */
-            $rootNode = $treeBuilder->root('sylius_fixtures');
-        }
+        /** @var ArrayNodeDefinition $rootNode */
+        $rootNode = $treeBuilder->getRootNode();
 
         $this->buildSuitesNode($rootNode);
 
@@ -55,7 +47,7 @@ final class Configuration implements ConfigurationInterface
         $suitesNode
             ->validate()
                 ->ifArray()
-                ->then(function (array $value) {
+                ->then(static function (array $value): array {
                     if (!isset($value['fixtures'])) {
                         return $value;
                     }
@@ -113,7 +105,7 @@ final class Configuration implements ConfigurationInterface
 
         $optionsNode
             ->validate()
-                ->ifTrue(function (array $values) {
+                ->ifTrue(static function (array $values): bool {
                     foreach ($values as $value) {
                         if (!is_array($value)) {
                             return true;
@@ -127,9 +119,12 @@ final class Configuration implements ConfigurationInterface
 
         $optionsNode
             ->beforeNormalization()
-                ->always(function ($value) {
-                    return [$value];
-                })
+                ->always(
+                    /** @param mixed $value */
+                    static function ($value): array {
+                        return [$value];
+                    }
+                )
         ;
 
         $optionsNode->variablePrototype()->cannotBeEmpty()->defaultValue([]);

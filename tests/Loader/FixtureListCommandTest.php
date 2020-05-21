@@ -19,7 +19,7 @@ final class FixtureListCommandTest extends KernelTestCase
 
     protected static $container;
 
-    public function setUp()
+    public function setUp(): void
     {
         self::$kernel = static::createKernel();
         self::$kernel->boot();
@@ -42,7 +42,11 @@ final class FixtureListCommandTest extends KernelTestCase
         ;
 
         $application = new Application(self::$kernel);
-        $application->add(new FixturesLoadCommand());
+        $application->add(new FixturesLoadCommand(
+            $suiteRegistry,
+            self::$container->get('sylius_fixtures.suite_loader'),
+            self::$container->getParameter('kernel.environment')
+        ));
         $command = $application->find('sylius:fixtures:list');
         $this->commandTester = new CommandTester($command);
     }
