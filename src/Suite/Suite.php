@@ -15,24 +15,23 @@ namespace Sylius\Bundle\FixturesBundle\Suite;
 
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 use Sylius\Bundle\FixturesBundle\Listener\ListenerInterface;
-use Zend\Stdlib\SplPriorityQueue;
 
 final class Suite implements SuiteInterface
 {
     /** @var string */
     private $name;
 
-    /** @var SplPriorityQueue */
+    /** @var PriorityQueue */
     private $fixtures;
 
-    /** @var SplPriorityQueue */
+    /** @var PriorityQueue */
     private $listeners;
 
     public function __construct(string $name)
     {
         $this->name = $name;
-        $this->fixtures = new SplPriorityQueue();
-        $this->listeners = new SplPriorityQueue();
+        $this->fixtures = new PriorityQueue();
+        $this->listeners = new PriorityQueue();
     }
 
     public function addFixture(FixtureInterface $fixture, array $options, int $priority = 0): void
@@ -58,8 +57,7 @@ final class Suite implements SuiteInterface
      */
     public function getFixtures(): iterable
     {
-        $fixtures = clone $this->fixtures;
-        foreach ($fixtures as $fixture) {
+        foreach ($this->fixtures as $fixture) {
             yield $fixture['fixture'] => $fixture['options'];
         }
     }
@@ -69,8 +67,7 @@ final class Suite implements SuiteInterface
      */
     public function getListeners(): iterable
     {
-        $listeners = clone $this->listeners;
-        foreach ($listeners as $listener) {
+        foreach ($this->listeners as $listener) {
             yield $listener['listener'] => $listener['options'];
         }
     }

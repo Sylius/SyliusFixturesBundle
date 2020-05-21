@@ -26,8 +26,7 @@
         "monolog/monolog": "^1.8",
         "symfony/framework-bundle": "^3.4|^4.1.1",
         "symfony/monolog-bridge": "^3.4|^4.1.1",
-        "webmozart/assert": "^1.0",
-        "zendframework/zend-stdlib": "^3.0"
+        "webmozart/assert": "^1.0"
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "^1.3",
