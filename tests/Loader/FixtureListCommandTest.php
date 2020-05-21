@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Paweł Jędrzejewski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Sylius\Bundle\FixturesBundle\Tests\Loader;
@@ -36,7 +45,7 @@ final class FixtureListCommandTest extends KernelTestCase
         $suiteRegistry = self::$container->get('sylius_fixtures.suite_registry');
         $suiteRegistry
             ->addSuite('default', [
-                'fixtures'  => $this->createFixture('sample_fixture'),
+                'fixtures' => $this->createFixture('sample_fixture'),
                 'listeners' => [],
             ])
         ;
@@ -72,7 +81,7 @@ Available fixtures:
     {
         return [
             $name => [
-                'name'    => $name,
+                'name' => $name,
                 'options' => $options,
             ],
         ];

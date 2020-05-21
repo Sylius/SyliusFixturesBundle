@@ -24,19 +24,13 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 final class FixturesLoadCommand extends Command
 {
-    /**
-     * @var SuiteRegistryInterface
-     */
+    /** @var SuiteRegistryInterface */
     private $suiteRegistry;
 
-    /**
-     * @var SuiteLoaderInterface
-     */
+    /** @var SuiteLoaderInterface */
     private $suiteLoader;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $environment;
 
     public function __construct(SuiteRegistryInterface $suiteRegistry, SuiteLoaderInterface $suiteLoader, string $environment)

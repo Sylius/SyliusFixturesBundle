@@ -21,14 +21,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class FixturesListCommand extends Command
 {
-    /**
-     * @var SuiteRegistryInterface
-     */
+    /** @var SuiteRegistryInterface */
     private $suiteRegistry;
 
-    /**
-     * @var FixtureRegistryInterface
-     */
+    /** @var FixtureRegistryInterface */
     private $fixtureRegistry;
 
     public function __construct(SuiteRegistryInterface $suiteRegistry, FixtureRegistryInterface $fixtureRegistry)
