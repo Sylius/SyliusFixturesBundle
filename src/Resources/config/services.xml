@@ -22,10 +22,15 @@
 
     <services>
         <service id="Sylius\Bundle\FixturesBundle\Command\FixturesListCommand">
+            <argument type="service" id="sylius_fixtures.suite_registry" />
+            <argument type="service" id="sylius_fixtures.fixture_registry" />
             <tag name="console.command" />
         </service>
 
         <service id="Sylius\Bundle\FixturesBundle\Command\FixturesLoadCommand">
+            <argument type="service" id="sylius_fixtures.suite_registry" />
+            <argument type="service" id="sylius_fixtures.suite_loader" />
+            <argument>%kernel.environment%</argument>
             <tag name="console.command" />
         </service>
     </services>

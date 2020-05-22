@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sylius package.
+ *
+ * (c) Paweł Jędrzejewski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Sylius\Bundle\FixturesBundle\Tests\Loader;
@@ -38,7 +47,7 @@ final class FixtureLoaderTest extends KernelTestCase
         return $lazySuiteRegistry;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         self::$kernel = static::createKernel();
         self::$kernel->boot();
@@ -61,7 +70,11 @@ final class FixtureLoaderTest extends KernelTestCase
         $registry->addFixture(new SampleFixture($this->em));
 
         $application = new Application(self::$kernel);
-        $application->add(new FixturesLoadCommand());
+        $application->add(new FixturesLoadCommand(
+            self::$container->get('sylius_fixtures.suite_registry'),
+            self::$container->get('sylius_fixtures.suite_loader'),
+            self::$container->getParameter('kernel.environment')
+        ));
         $command = $application->find('sylius:fixtures:load');
         $this->commandTester = new CommandTester($command);
     }
@@ -73,7 +86,7 @@ final class FixtureLoaderTest extends KernelTestCase
     {
         $this->getLazySuiteRegistry()
             ->addSuite('default', [
-                'fixtures'  => $this->createConfiguration('sample_fixture'),
+                'fixtures' => $this->createConfiguration('sample_fixture'),
                 'listeners' => [],
             ])
         ;
@@ -82,7 +95,7 @@ final class FixtureLoaderTest extends KernelTestCase
 
         $connection = $this->em->getConnection();
         $result = $connection->fetchArray('SELECT count(*) FROM testTable WHERE test_column = "test";');
-        $this->assertSame(1, (int)$result[0]);
+        $this->assertSame(1, (int) $result[0]);
     }
 
     /**
@@ -92,7 +105,7 @@ final class FixtureLoaderTest extends KernelTestCase
     {
         $this->getLazySuiteRegistry()
             ->addSuite('sample', [
-                'fixtures'  => $this->createConfiguration('sample_fixture'),
+                'fixtures' => $this->createConfiguration('sample_fixture'),
                 'listeners' => [],
             ])
         ;
@@ -101,7 +114,7 @@ final class FixtureLoaderTest extends KernelTestCase
 
         $connection = $this->em->getConnection();
         $result = $connection->fetchArray('SELECT count(*) FROM testTable WHERE test_column = "test";');
-        $this->assertSame(1, (int)$result[0]);
+        $this->assertSame(1, (int) $result[0]);
     }
 
     /**
@@ -111,7 +124,7 @@ final class FixtureLoaderTest extends KernelTestCase
     {
         $this->getLazySuiteRegistry()
              ->addSuite('sample', [
-                 'fixtures'  => $this->createConfiguration('sample_fixture'),
+                 'fixtures' => $this->createConfiguration('sample_fixture'),
                  'listeners' => $this->createConfiguration('logger'),
              ])
         ;
@@ -130,12 +143,12 @@ final class FixtureLoaderTest extends KernelTestCase
     {
         $this->getLazySuiteRegistry()
             ->addSuite('default', [
-                'fixtures'  => $this->createConfiguration('sample_fixture'),
+                'fixtures' => $this->createConfiguration('sample_fixture'),
                 'listeners' => [],
             ]);
         $this->getLazySuiteRegistry()
             ->addSuite('sample', [
-                 'fixtures'  => $this->createConfiguration('sample_fixture'),
+                 'fixtures' => $this->createConfiguration('sample_fixture'),
                  'listeners' => $this->createConfiguration('suite_loader', ['options' => ['suites' => ['default']]]),
              ])
         ;
@@ -144,8 +157,9 @@ final class FixtureLoaderTest extends KernelTestCase
 
         $connection = $this->em->getConnection();
         $result = $connection->fetchArray('SELECT count(*) FROM testTable WHERE test_column = "test";');
-        $this->assertSame(2, (int)$result[0]);
+        $this->assertSame(2, (int) $result[0]);
     }
+
     /**
      * @test
      */
@@ -160,7 +174,7 @@ final class FixtureLoaderTest extends KernelTestCase
     {
         return [
             $name => [
-                'name'    => $name,
+                'name' => $name,
                 'options' => $options,
             ],
         ];

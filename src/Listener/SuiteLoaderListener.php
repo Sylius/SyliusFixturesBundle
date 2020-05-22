@@ -13,9 +13,6 @@ declare(strict_types=1);
 
 namespace Sylius\Bundle\FixturesBundle\Listener;
 
-use Sylius\Bundle\FixturesBundle\Listener\AbstractListener;
-use Sylius\Bundle\FixturesBundle\Listener\BeforeSuiteListenerInterface;
-use Sylius\Bundle\FixturesBundle\Listener\SuiteEvent;
 use Sylius\Bundle\FixturesBundle\Loader\SuiteLoaderInterface;
 use Sylius\Bundle\FixturesBundle\Suite\SuiteRegistryInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -31,7 +28,7 @@ final class SuiteLoaderListener extends AbstractListener implements BeforeSuiteL
     public function __construct(SuiteRegistryInterface $suiteRegistry, SuiteLoaderInterface $suiteLoader)
     {
         $this->suiteRegistry = $suiteRegistry;
-        $this->suiteLoader   = $suiteLoader;
+        $this->suiteLoader = $suiteLoader;
     }
 
     /** {@inheritdoc} */

@@ -5,7 +5,11 @@
          colors="true"
 >
     <php>
+        <ini name="error_reporting" value="-1" />
+
         <env name="KERNEL_CLASS" value="Sylius\Bundle\FixturesBundle\Tests\Application\Kernel" />
+
+        <server name="SHELL_VERBOSITY" value="-1" />
     </php>
 
     <testsuites>
