@@ -25,13 +25,6 @@ final class PriorityQueue implements \IteratorAggregate
      */
     private $records = [];
 
-    /**
-     * @psalm-var array<int, array>
-     *
-     * @var array[]
-     */
-    private $sortedRecords = [];
-
     /** @var bool */
     private $sorted = false;
 
@@ -44,16 +37,19 @@ final class PriorityQueue implements \IteratorAggregate
     public function getIterator(): \Traversable
     {
         if ($this->sorted === false) {
-            // Reversing the records to maintain FIFO order for item with the same priority
-            $this->sortedRecords = array_reverse($this->records);
-
             /** @psalm-suppress InvalidPassByReference Doing PHP magic, it works this way */
-            array_multisort(array_column($this->sortedRecords, 'priority'), \SORT_DESC, $this->sortedRecords);
+            array_multisort(
+                array_column($this->records, 'priority'),
+                \SORT_DESC,
+                array_keys($this->records),
+                \SORT_ASC,
+                $this->records
+            );
 
             $this->sorted = true;
         }
 
-        foreach ($this->sortedRecords as $record) {
+        foreach ($this->records as $record) {
             yield $record['data'];
         }
     }

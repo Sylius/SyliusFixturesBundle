@@ -25,18 +25,20 @@ final class PriorityQueueSpec extends ObjectBehavior
 
     function it_keeps_fifo_order_for_elements_with_same_priority(): void
     {
-        $this->insert(['element' => 1]);
         $this->insert(['element' => 2]);
+        $this->insert(['element' => 1]);
+        $this->insert(['element' => 3]);
 
-        $this->getIterator()->shouldIterateAs([['element' => 1], ['element' => 2]]);
+        $this->getIterator()->shouldIterateAs([['element' => 2], ['element' => 1], ['element' => 3]]);
     }
 
     function it_sorts_elements_by_their_priority(): void
     {
-        $this->insert(['element' => 3], -1);
+        $this->insert(['element' => 1], -1);
         $this->insert(['element' => 2], 0);
-        $this->insert(['element' => 1], 1);
+        $this->insert(['element' => 3], 1);
+        $this->insert(['element' => 4], 0);
 
-        $this->getIterator()->shouldIterateAs([['element' => 1], ['element' => 2], ['element' => 3]]);
+        $this->getIterator()->shouldIterateAs([['element' => 3], ['element' => 2], ['element' => 4], ['element' => 1]]);
     }
 }
