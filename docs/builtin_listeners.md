@@ -9,7 +9,7 @@ This allows a fixture suite to define other suites which will be loaded **before
 sylius_fixtures:
     suites:
         my_suite:
-            listener:
+            listeners:
                 suite_loader:
                     options:
                         suites:
