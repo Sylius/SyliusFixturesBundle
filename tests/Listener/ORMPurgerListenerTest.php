@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sylius\Bundle\FixturesBundle\Tests\Listener;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\FixturesBundle\Listener\ORMPurgerListener;
