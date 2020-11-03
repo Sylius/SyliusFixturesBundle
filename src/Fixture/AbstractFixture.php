@@ -18,9 +18,6 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 abstract class AbstractFixture implements FixtureInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     final public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder($this->getName());

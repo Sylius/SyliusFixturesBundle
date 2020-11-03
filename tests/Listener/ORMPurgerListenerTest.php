@@ -63,9 +63,6 @@ final class ORMPurgerListenerTest extends TestCase
         $this->assertProcessedConfigurationEquals([['managers' => ['custom']]], ['managers' => ['custom']], 'managers');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): ConfigurationInterface
     {
         return new ORMPurgerListener($this->getMockBuilder(ManagerRegistry::class)->getMock());

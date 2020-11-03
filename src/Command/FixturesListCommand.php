@@ -35,9 +35,6 @@ final class FixturesListCommand extends Command
         $this->fixtureRegistry = $fixtureRegistry;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -46,9 +43,6 @@ final class FixturesListCommand extends Command
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->listSuites($output);

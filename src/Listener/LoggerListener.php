@@ -25,25 +25,16 @@ final class LoggerListener extends AbstractListener implements BeforeSuiteListen
         $this->logger = $logger;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function beforeSuite(SuiteEvent $suiteEvent, array $options): void
     {
         $this->logger->notice(sprintf('Running suite "%s"...', $suiteEvent->suite()->getName()));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function beforeFixture(FixtureEvent $fixtureEvent, array $options): void
     {
         $this->logger->notice(sprintf('Running fixture "%s"...', $fixtureEvent->fixture()->getName()));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'logger';

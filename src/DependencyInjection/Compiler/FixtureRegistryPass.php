@@ -21,9 +21,6 @@ final class FixtureRegistryPass implements CompilerPassInterface
 {
     public const FIXTURE_SERVICE_TAG = 'sylius_fixtures.fixture';
 
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container): void
     {
         if (!$container->has('sylius_fixtures.fixture_registry')) {

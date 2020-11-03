@@ -21,9 +21,6 @@ final class ListenerRegistryPass implements CompilerPassInterface
 {
     public const LISTENER_SERVICE_TAG = 'sylius_fixtures.listener';
 
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container): void
     {
         if (!$container->has('sylius_fixtures.listener_registry')) {

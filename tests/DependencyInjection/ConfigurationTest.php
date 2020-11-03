@@ -328,9 +328,6 @@ final class ConfigurationTest extends TestCase
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): ConfigurationInterface
     {
         return new Configuration();

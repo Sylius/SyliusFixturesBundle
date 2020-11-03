@@ -34,9 +34,6 @@ final class LazySuiteRegistry implements SuiteRegistryInterface
         $this->suiteDefinitions[$name] = $configuration;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSuite(string $name): SuiteInterface
     {
         if (isset($this->suites[$name])) {
@@ -50,9 +47,6 @@ final class LazySuiteRegistry implements SuiteRegistryInterface
         return $this->suites[$name] = $this->suiteFactory->createSuite($name, $this->suiteDefinitions[$name]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSuites(): array
     {
         $suites = [];

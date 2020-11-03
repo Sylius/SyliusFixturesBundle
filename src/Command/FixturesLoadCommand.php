@@ -42,9 +42,6 @@ final class FixturesLoadCommand extends Command
         $this->environment = $environment;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -54,9 +51,6 @@ final class FixturesLoadCommand extends Command
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if ($input->isInteractive()) {

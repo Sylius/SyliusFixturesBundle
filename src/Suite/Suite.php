@@ -44,17 +44,11 @@ final class Suite implements SuiteInterface
         $this->listeners->insert(['listener' => $listener, 'options' => $options], $priority);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFixtures(): iterable
     {
         foreach ($this->fixtures as $fixture) {
@@ -62,9 +56,6 @@ final class Suite implements SuiteInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getListeners(): iterable
     {
         foreach ($this->listeners as $listener) {

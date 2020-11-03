@@ -39,9 +39,6 @@ final class PHPCRPurgerListenerTest extends TestCase
         $this->assertProcessedConfigurationEquals([['managers' => ['custom']]], ['managers' => ['custom']], 'managers');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): ConfigurationInterface
     {
         return new PHPCRPurgerListener($this->getMockBuilder(ManagerRegistry::class)->getMock());

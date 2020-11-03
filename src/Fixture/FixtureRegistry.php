@@ -27,9 +27,6 @@ final class FixtureRegistry implements FixtureRegistryInterface
         $this->fixtures[$fixture->getName()] = $fixture;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFixture(string $name): FixtureInterface
     {
         if (!isset($this->fixtures[$name])) {
@@ -39,9 +36,6 @@ final class FixtureRegistry implements FixtureRegistryInterface
         return $this->fixtures[$name];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFixtures(): array
     {
         return $this->fixtures;

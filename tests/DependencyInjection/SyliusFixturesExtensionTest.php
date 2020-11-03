@@ -83,9 +83,6 @@ final class SyliusFixturesExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getContainerExtensions(): array
     {
         return [new SyliusFixturesExtension()];

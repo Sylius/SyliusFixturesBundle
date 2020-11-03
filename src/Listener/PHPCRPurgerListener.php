@@ -28,9 +28,6 @@ final class PHPCRPurgerListener extends AbstractListener implements BeforeSuiteL
         $this->managerRegistry = $managerRegistry;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function beforeSuite(SuiteEvent $suiteEvent, array $options): void
     {
         foreach ($options['managers'] as $managerName) {
@@ -42,17 +39,11 @@ final class PHPCRPurgerListener extends AbstractListener implements BeforeSuiteL
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'phpcr_purger';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode

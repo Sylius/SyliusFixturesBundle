@@ -26,9 +26,6 @@ final class SuiteLoader implements SuiteLoaderInterface
         $this->fixtureLoader = $fixtureLoader;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(SuiteInterface $suite): void
     {
         /** @var FixtureInterface $fixture */

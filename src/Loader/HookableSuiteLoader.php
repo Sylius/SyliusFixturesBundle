@@ -28,9 +28,6 @@ final class HookableSuiteLoader implements SuiteLoaderInterface
         $this->decoratedSuiteLoader = $decoratedSuiteLoader;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(SuiteInterface $suite): void
     {
         $suiteEvent = new SuiteEvent($suite);

@@ -34,9 +34,6 @@ final class ORMPurgerListener extends AbstractListener implements BeforeSuiteLis
         $this->managerRegistry = $managerRegistry;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function beforeSuite(SuiteEvent $suiteEvent, array $options): void
     {
         foreach ($options['managers'] as $managerName) {
@@ -49,17 +46,11 @@ final class ORMPurgerListener extends AbstractListener implements BeforeSuiteLis
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'orm_purger';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNodeBuilder = $optionsNode->children();

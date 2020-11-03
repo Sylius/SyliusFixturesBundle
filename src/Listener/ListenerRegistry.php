@@ -27,9 +27,6 @@ final class ListenerRegistry implements ListenerRegistryInterface
         $this->listeners[$listener->getName()] = $listener;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getListener(string $name): ListenerInterface
     {
         if (!isset($this->listeners[$name])) {
@@ -39,9 +36,6 @@ final class ListenerRegistry implements ListenerRegistryInterface
         return $this->listeners[$name];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getListeners(): array
     {
         return $this->listeners;

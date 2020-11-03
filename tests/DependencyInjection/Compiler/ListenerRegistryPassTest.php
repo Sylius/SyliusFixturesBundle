@@ -38,9 +38,6 @@ final class ListenerRegistryPassTest extends AbstractCompilerPassTestCase
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function registerCompilerPass(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new ListenerRegistryPass());

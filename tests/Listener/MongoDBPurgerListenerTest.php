@@ -39,9 +39,6 @@ final class MongoDBPurgerListenerTest extends TestCase
         $this->assertProcessedConfigurationEquals([['managers' => ['custom']]], ['managers' => ['custom']], 'managers');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): ConfigurationInterface
     {
         return new MongoDBPurgerListener($this->getMockBuilder(ManagerRegistry::class)->getMock());

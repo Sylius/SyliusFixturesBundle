@@ -26,17 +26,11 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 final class SyliusFixturesExtension extends Extension implements PrependExtensionInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getConfiguration(array $config, ContainerBuilder $container): ConfigurationInterface
     {
         return new Configuration();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
@@ -56,9 +50,6 @@ final class SyliusFixturesExtension extends Extension implements PrependExtensio
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function prepend(ContainerBuilder $container): void
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));

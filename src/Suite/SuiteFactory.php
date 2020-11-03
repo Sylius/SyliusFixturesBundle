@@ -39,9 +39,6 @@ final class SuiteFactory implements SuiteFactoryInterface
         $this->optionsProcessor = $optionsProcessor;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createSuite(string $name, array $configuration): SuiteInterface
     {
         Assert::keyExists($configuration, 'fixtures');

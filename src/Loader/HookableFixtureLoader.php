@@ -29,9 +29,6 @@ final class HookableFixtureLoader implements FixtureLoaderInterface
         $this->decoratedFixtureLoader = $decoratedFixtureLoader;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function load(SuiteInterface $suite, FixtureInterface $fixture, array $options): void
     {
         $fixtureEvent = new FixtureEvent($suite, $fixture, $options);

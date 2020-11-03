@@ -28,9 +28,6 @@ final class MongoDBPurgerListener extends AbstractListener implements BeforeSuit
         $this->managerRegistry = $managerRegistry;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function beforeSuite(SuiteEvent $suiteEvent, array $options): void
     {
         foreach ($options['managers'] as $managerName) {
@@ -42,17 +39,11 @@ final class MongoDBPurgerListener extends AbstractListener implements BeforeSuit
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return 'mongodb_purger';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode

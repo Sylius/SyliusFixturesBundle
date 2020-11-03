@@ -31,13 +31,11 @@ final class SuiteLoaderListener extends AbstractListener implements BeforeSuiteL
         $this->suiteLoader = $suiteLoader;
     }
 
-    /** {@inheritdoc} */
     public function getName(): string
     {
         return 'suite_loader';
     }
 
-    /** {@inheritdoc} */
     public function beforeSuite(SuiteEvent $suiteEvent, array $options): void
     {
         foreach ($options['suites'] as $suiteName) {
@@ -46,7 +44,6 @@ final class SuiteLoaderListener extends AbstractListener implements BeforeSuiteL
         }
     }
 
-    /** {@inheritdoc} */
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
         $optionsNode->children()

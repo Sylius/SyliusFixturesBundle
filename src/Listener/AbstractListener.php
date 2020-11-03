@@ -18,9 +18,6 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 abstract class AbstractListener implements ListenerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     final public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder($this->getName());
