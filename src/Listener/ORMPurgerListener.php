@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Sylius\Bundle\FixturesBundle\Listener;
 
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class ORMPurgerListener extends AbstractListener implements BeforeSuiteListenerInterface
