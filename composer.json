@@ -23,7 +23,7 @@
         "php": "^7.3",
 
         "doctrine/data-fixtures": "^1.2",
-        "monolog/monolog": "^1.25",
+        "monolog/monolog": "^2.1",
         "symfony/framework-bundle": "^4.4|^5.1",
         "symfony/monolog-bridge": "^4.4|^5.1",
         "webmozart/assert": "^1.9"
