@@ -36,7 +36,7 @@
         "phpspec/phpspec": "^7.0",
         "phpunit/phpunit": "^9.4",
         "sylius-labs/coding-standard": "^3.2",
-        "vimeo/psalm": "3.11.4"
+        "vimeo/psalm": "4.1.1"
     },
     "autoload": {
         "psr-4": { "Sylius\\Bundle\\FixturesBundle\\": "src/" }
