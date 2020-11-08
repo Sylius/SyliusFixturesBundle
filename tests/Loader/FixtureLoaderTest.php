@@ -167,7 +167,7 @@ final class FixtureLoaderTest extends KernelTestCase
     {
         $this->expectException(SuiteNotFoundException::class);
 
-        $this->commandTester->execute([], ['interactive' => false]);
+        $this->commandTester->execute(['suite' => 'not_found'], ['interactive' => false]);
     }
 
     private function createConfiguration(string $name, array $options = []): array

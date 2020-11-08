@@ -71,6 +71,7 @@ final class FixtureListCommandTest extends KernelTestCase
             'Available suites:
  - default
 Available fixtures:
+ - dummy
  - sample_fixture
 ',
             $this->commandTester->getDisplay(true)

@@ -61,5 +61,13 @@ jobs:
                 run: composer analyse
 
             -
+                name: Install test application dependencies
+                run: (cd tests/Application/ && composer install)
+
+            -
+                name: Setup test application database
+                run: (cd tests/Application/ && bin/console doctrine:database:create && bin/console doctrine:schema:create)
+
+            -
                 name: Run tests
                 run: composer test

@@ -8,13 +8,14 @@
         <ini name="error_reporting" value="-1" />
 
         <env name="KERNEL_CLASS" value="Sylius\Bundle\FixturesBundle\Tests\Application\Kernel" />
+        <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true" />
 
         <server name="SHELL_VERBOSITY" value="-1" />
     </php>
 
     <testsuites>
         <testsuite name="SyliusFixturesBundle Test Suite">
-            <directory>./Tests/</directory>
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
