@@ -16,7 +16,6 @@ namespace App\Fixture;
 use App\Fixture\Factory\FooExampleFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\AbstractExampleFactoryAwareFixture;
-use Sylius\Bundle\FixturesBundle\Fixture\Factory\ExampleFactoryInterface;
 
 final class AlternativeFooFixture extends AbstractExampleFactoryAwareFixture
 {
