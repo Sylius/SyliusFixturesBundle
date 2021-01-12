@@ -1,6 +1,6 @@
 framework:
     secret: "Three can keep a secret, if two of them are dead."
-    test: ~
+    test: true
 
 doctrine:
     dbal:
@@ -8,6 +8,45 @@ doctrine:
         path: "%kernel.project_dir%/var/db.sql"
         charset: UTF8
     orm:
-        entity_managers:
-            default:
-                auto_mapping: true
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
+
+sylius_fixtures:
+    suites:
+        default:
+            listeners:
+                orm_purger: null
+            fixtures:
+                dummy:
+                    options:
+                        random: 10
+                        custom:
+                            - foo: 'fighters'
+                bar: null
+                foo:
+                    options:
+                        random: 10
+                alternative_foo:
+                    options:
+                        random: 10
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Fixture\BarFixture: null
+    App\Fixture\DummyFixture: null
+    App\Fixture\FooFixture: null
+    App\Fixture\AlternativeFooFixture: null
+    App\Fixture\Factory\DummyExampleFactory: null
+    App\Fixture\Factory\FooExampleFactory: null
