@@ -39,7 +39,7 @@
         "phpspec/phpspec": "^7.0",
         "phpunit/phpunit": "^9.4",
         "sylius-labs/coding-standard": "^3.2",
-        "vimeo/psalm": "4.3.2"
+        "vimeo/psalm": "4.6.4"
     },
     "extra": {
         "branch-alias": {
