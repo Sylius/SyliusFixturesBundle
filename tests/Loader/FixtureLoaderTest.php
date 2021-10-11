@@ -28,11 +28,9 @@ use Webmozart\Assert\Assert;
 
 final class FixtureLoaderTest extends KernelTestCase
 {
-    /** @var CommandTester */
-    private $commandTester;
+    private CommandTester $commandTester;
 
-    /** @var EntityManagerInterface */
-    private $em;
+    private EntityManagerInterface $em;
 
     /** @var MockObject|LoggerInterface */
     private $logger;

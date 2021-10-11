@@ -20,8 +20,7 @@ use Sylius\Bundle\FixturesBundle\Suite\SuiteInterface;
 
 final class HookableSuiteLoader implements SuiteLoaderInterface
 {
-    /** @var SuiteLoaderInterface */
-    private $decoratedSuiteLoader;
+    private SuiteLoaderInterface $decoratedSuiteLoader;
 
     public function __construct(SuiteLoaderInterface $decoratedSuiteLoader)
     {

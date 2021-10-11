@@ -23,10 +23,9 @@ final class PriorityQueue implements \IteratorAggregate
      *
      * @var array[]
      */
-    private $records = [];
+    private array $records = [];
 
-    /** @var bool */
-    private $sorted = false;
+    private bool $sorted = false;
 
     public function insert(array $data, int $priority = 0): void
     {

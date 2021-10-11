@@ -18,11 +18,9 @@ use Sylius\Bundle\FixturesBundle\Suite\SuiteInterface;
 
 final class FixtureEvent
 {
-    /** @var SuiteInterface */
-    private $suite;
+    private SuiteInterface $suite;
 
-    /** @var FixtureInterface */
-    private $fixture;
+    private FixtureInterface $fixture;
 
     /** @var array */
     private $fixtureOptions;

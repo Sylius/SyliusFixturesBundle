@@ -20,11 +20,9 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 final class ORMPurgerListener extends AbstractListener implements BeforeSuiteListenerInterface
 {
-    /** @var ManagerRegistry */
-    private $managerRegistry;
+    private ManagerRegistry $managerRegistry;
 
-    /** @var array */
-    private static $purgeModes = [
+    private static array $purgeModes = [
         'delete' => ORMPurger::PURGE_MODE_DELETE,
         'truncate' => ORMPurger::PURGE_MODE_TRUNCATE,
     ];

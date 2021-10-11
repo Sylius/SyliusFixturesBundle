@@ -18,14 +18,11 @@ use Sylius\Bundle\FixturesBundle\Listener\ListenerInterface;
 
 final class Suite implements SuiteInterface
 {
-    /** @var string */
-    private $name;
+    private string $name;
 
-    /** @var PriorityQueue */
-    private $fixtures;
+    private PriorityQueue $fixtures;
 
-    /** @var PriorityQueue */
-    private $listeners;
+    private PriorityQueue $listeners;
 
     public function __construct(string $name)
     {

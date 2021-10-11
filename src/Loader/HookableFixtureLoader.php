@@ -21,8 +21,7 @@ use Sylius\Bundle\FixturesBundle\Suite\SuiteInterface;
 
 final class HookableFixtureLoader implements FixtureLoaderInterface
 {
-    /** @var FixtureLoaderInterface */
-    private $decoratedFixtureLoader;
+    private FixtureLoaderInterface $decoratedFixtureLoader;
 
     public function __construct(FixtureLoaderInterface $decoratedFixtureLoader)
     {

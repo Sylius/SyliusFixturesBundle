@@ -18,8 +18,7 @@ use Sylius\Bundle\FixturesBundle\Suite\SuiteInterface;
 
 final class SuiteLoader implements SuiteLoaderInterface
 {
-    /** @var FixtureLoaderInterface */
-    private $fixtureLoader;
+    private FixtureLoaderInterface $fixtureLoader;
 
     public function __construct(FixtureLoaderInterface $fixtureLoader)
     {

@@ -18,8 +18,7 @@ use Sylius\Bundle\FixturesBundle\Fixture\AbstractFixture;
 
 final class SampleFixture extends AbstractFixture
 {
-    /** @var EntityManagerInterface */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
