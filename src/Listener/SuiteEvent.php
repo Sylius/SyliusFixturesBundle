@@ -17,8 +17,7 @@ use Sylius\Bundle\FixturesBundle\Suite\SuiteInterface;
 
 final class SuiteEvent
 {
-    /** @var SuiteInterface */
-    private $suite;
+    private SuiteInterface $suite;
 
     public function __construct(SuiteInterface $suite)
     {

@@ -23,8 +23,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 final class FixtureListCommandTest extends KernelTestCase
 {
-    /** @var CommandTester */
-    private $commandTester;
+    private CommandTester $commandTester;
 
     protected static $container;
 
