@@ -24,11 +24,11 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.0",
         "doctrine/data-fixtures": "^1.2",
         "monolog/monolog": "^1.25 || ^2.1",
-        "symfony/framework-bundle": "^4.4 || ^5.1",
-        "symfony/monolog-bridge": "^4.4 || ^5.1",
+        "symfony/framework-bundle": "^4.4 || ^5.4",
+        "symfony/monolog-bridge": "^4.4 || ^5.4",
         "webmozart/assert": "^1.9"
     },
     "require-dev": {
