@@ -16,13 +16,8 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                include:
-                    -
-                        php: 8.0
-                        symfony-version: 4.4.*
-                    -
-                        php: 8.0
-                        symfony-version: 5.4.*
+                php: ["8.0", "8.1"]
+                symfony: ["^5.4"]
 
         steps:
             -
@@ -36,9 +31,11 @@ jobs:
                     coverage: none
 
             -
-                name: Update Symfony version
-                if: matrix.symfony-version != ''
-                run: composer require --no-update --no-scripts "symfony/framework-bundle:${{ matrix.symfony-version }}" "symfony/monolog-bridge:${{ matrix.symfony-version }}"
+                name: Restrict Symfony version
+                if: matrix.symfony != ''
+                run: |
+                    composer global require --no-progress --no-scripts --no-plugins "symfony/flex:^1.17.1"
+                    composer config extra.symfony.require "${{ matrix.symfony }}"
 
             -
                 name: Install dependencies
