@@ -42,10 +42,6 @@ jobs:
                 run: composer update ${{ matrix.composer-flags }}
 
             -
-                name: Run Psalm
-                run: vendor/bin/psalm --php-version=${{ matrix.php }}
-
-            -
                 name: Run analysis
                 run: composer analyse
 

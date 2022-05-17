@@ -64,7 +64,8 @@
     "scripts": {
         "analyse": [
             "@composer validate --strict",
-            "vendor/bin/ecs check spec src tests"
+            "vendor/bin/ecs check spec src tests",
+            "vendor/bin/psalm"
         ],
         "fix": [
             "vendor/bin/ecs check spec src tests --fix"
