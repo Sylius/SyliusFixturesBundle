@@ -38,12 +38,12 @@ jobs:
                     composer config extra.symfony.require "${{ matrix.symfony }}"
 
             -
-                name: Run Psalm
-                run: vendor/bin/psalm --php-version=${{ matrix.php }}
-
-            -
                 name: Install dependencies
                 run: composer update ${{ matrix.composer-flags }}
+
+            -
+                name: Run Psalm
+                run: vendor/bin/psalm --php-version=${{ matrix.php }}
 
             -
                 name: Run analysis
