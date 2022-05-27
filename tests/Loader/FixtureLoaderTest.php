@@ -59,8 +59,8 @@ final class FixtureLoaderTest extends KernelTestCase
         $this->em = $entityManager;
         $connection = $this->em->getConnection();
 
-        $connection->exec('CREATE TABLE IF NOT EXISTS testTable (test_column varchar(255) NOT NULL);');
-        $connection->exec('DELETE FROM testTable');
+        $connection->executeStatement('CREATE TABLE IF NOT EXISTS testTable (test_column varchar(255) NOT NULL);');
+        $connection->executeStatement('DELETE FROM testTable');
 
         /** @var FixtureRegistry $registry */
         $registry = self::$container->get('sylius_fixtures.fixture_registry');
@@ -92,8 +92,8 @@ final class FixtureLoaderTest extends KernelTestCase
         $this->commandTester->execute([], ['interactive' => false]);
 
         $connection = $this->em->getConnection();
-        $result = $connection->fetchArray('SELECT count(*) FROM testTable WHERE test_column = "test";');
-        $this->assertSame(1, (int) $result[0]);
+        $result = $connection->fetchAssociative('SELECT count(*) as amount FROM testTable WHERE test_column = "test";');
+        $this->assertSame(1, (int) $result['amount']);
     }
 
     /**
@@ -111,8 +111,8 @@ final class FixtureLoaderTest extends KernelTestCase
         $this->commandTester->execute(['suite' => 'sample'], ['interactive' => false]);
 
         $connection = $this->em->getConnection();
-        $result = $connection->fetchArray('SELECT count(*) FROM testTable WHERE test_column = "test";');
-        $this->assertSame(1, (int) $result[0]);
+        $result = $connection->fetchAssociative('SELECT count(*) as amount FROM testTable WHERE test_column = "test";');
+        $this->assertSame(1, (int) $result['amount']);
     }
 
     /**
@@ -154,8 +154,8 @@ final class FixtureLoaderTest extends KernelTestCase
         $this->commandTester->execute(['suite' => 'sample'], ['interactive' => false]);
 
         $connection = $this->em->getConnection();
-        $result = $connection->fetchArray('SELECT count(*) FROM testTable WHERE test_column = "test";');
-        $this->assertSame(2, (int) $result[0]);
+        $result = $connection->fetchAssociative('SELECT count(*) as amount FROM testTable WHERE test_column = "test";');
+        $this->assertSame(2, (int) $result['amount']);
     }
 
     /**
