@@ -37,7 +37,7 @@ final class FixtureRegistrySpec extends ObjectBehavior
 
     function it_throws_an_exception_if_trying_to_another_fixture_with_the_same_name(
         FixtureInterface $fixture,
-        FixtureInterface $anotherFixture
+        FixtureInterface $anotherFixture,
     ): void {
         $fixture->getName()->willReturn('fixture');
         $anotherFixture->getName()->willReturn('fixture');

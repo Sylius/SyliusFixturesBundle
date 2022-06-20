@@ -40,7 +40,7 @@ final class SuiteLoaderListenerSpec extends ObjectBehavior
     public function it_loads_all_fixtures_configured(
         SuiteRegistryInterface $suiteRegistry,
         SuiteLoaderInterface $suiteLoader,
-        SuiteInterface $suite
+        SuiteInterface $suite,
     ): void {
         $suiteRegistry->getSuite('other_suits')->willReturn($suite);
         $suiteLoader->load($suite)->shouldBeCalled();

@@ -49,6 +49,7 @@ final class SuiteLoaderListener extends AbstractListener implements BeforeSuiteL
                 ->requiresAtLeastOneElement()
                 ->performNoDeepMerging()
                 ->prototype('scalar')
-            ->end();
+            ->end()
+        ;
     }
 }

@@ -46,7 +46,7 @@ final class SuiteFactorySpec extends ObjectBehavior
         FixtureRegistryInterface $fixtureRegistry,
         Processor $optionsProcessor,
         FixtureInterface $firstFixture,
-        FixtureInterface $secondFixture
+        FixtureInterface $secondFixture,
     ): void {
         $fixtureRegistry->getFixture('first_fixture')->willReturn($firstFixture);
         $fixtureRegistry->getFixture('second_fixture')->willReturn($secondFixture);
@@ -66,7 +66,7 @@ final class SuiteFactorySpec extends ObjectBehavior
     function it_creates_a_new_suite_with_fixtures_based_on_its_name_rather_than_alias(
         FixtureRegistryInterface $fixtureRegistry,
         Processor $optionsProcessor,
-        FixtureInterface $fixture
+        FixtureInterface $fixture,
     ): void {
         $fixtureRegistry->getFixture('fixture_name')->shouldBeCalled()->willReturn($fixture);
         $fixtureRegistry->getFixture('fixture_alias')->shouldNotBeCalled();
@@ -85,7 +85,7 @@ final class SuiteFactorySpec extends ObjectBehavior
         FixtureRegistryInterface $fixtureRegistry,
         Processor $optionsProcessor,
         FixtureInterface $fixture,
-        FixtureInterface $higherPriorityFixture
+        FixtureInterface $higherPriorityFixture,
     ): void {
         $fixtureRegistry->getFixture('fixture')->willReturn($fixture);
         $fixtureRegistry->getFixture('higher_priority_fixture')->willReturn($higherPriorityFixture);
@@ -105,7 +105,7 @@ final class SuiteFactorySpec extends ObjectBehavior
     function it_creates_a_new_suite_with_customized_fixture(
         FixtureRegistryInterface $fixtureRegistry,
         Processor $optionsProcessor,
-        FixtureInterface $fixture
+        FixtureInterface $fixture,
     ): void {
         $fixtureRegistry->getFixture('fixture')->willReturn($fixture);
 
@@ -123,7 +123,7 @@ final class SuiteFactorySpec extends ObjectBehavior
         ListenerRegistryInterface $listenerRegistry,
         Processor $optionsProcessor,
         ListenerInterface $firstListener,
-        ListenerInterface $secondListener
+        ListenerInterface $secondListener,
     ): void {
         $listenerRegistry->getListener('first_listener')->willReturn($firstListener);
         $listenerRegistry->getListener('second_listener')->willReturn($secondListener);
@@ -144,7 +144,7 @@ final class SuiteFactorySpec extends ObjectBehavior
         ListenerRegistryInterface $listenerRegistry,
         Processor $optionsProcessor,
         ListenerInterface $listener,
-        ListenerInterface $higherPriorityListener
+        ListenerInterface $higherPriorityListener,
     ): void {
         $listenerRegistry->getListener('listener')->willReturn($listener);
         $listenerRegistry->getListener('higher_priority_listener')->willReturn($higherPriorityListener);
@@ -164,7 +164,7 @@ final class SuiteFactorySpec extends ObjectBehavior
     function it_creates_a_new_suite_with_customized_listener(
         ListenerRegistryInterface $listenerRegistry,
         Processor $optionsProcessor,
-        ListenerInterface $listener
+        ListenerInterface $listener,
     ): void {
         $listenerRegistry->getListener('listener')->willReturn($listener);
 

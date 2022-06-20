@@ -53,7 +53,7 @@ final class FixtureListCommandTest extends KernelTestCase
         $application->add(new FixturesLoadCommand(
             $suiteRegistry,
             self::$container->get('sylius_fixtures.suite_loader'),
-            self::$container->getParameter('kernel.environment')
+            self::$container->getParameter('kernel.environment'),
         ));
         $command = $application->find('sylius:fixtures:list');
         $this->commandTester = new CommandTester($command);
@@ -72,7 +72,7 @@ final class FixtureListCommandTest extends KernelTestCase
 Available fixtures:
  - sample_fixture
 ',
-            $this->commandTester->getDisplay(true)
+            $this->commandTester->getDisplay(true),
         );
     }
 

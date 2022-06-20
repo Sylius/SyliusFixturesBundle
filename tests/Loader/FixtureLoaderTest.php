@@ -71,7 +71,7 @@ final class FixtureLoaderTest extends KernelTestCase
         $application->add(new FixturesLoadCommand(
             self::$container->get('sylius_fixtures.suite_registry'),
             self::$container->get('sylius_fixtures.suite_loader'),
-            self::$container->getParameter('kernel.environment')
+            self::$container->getParameter('kernel.environment'),
         ));
         $command = $application->find('sylius:fixtures:load');
         $this->commandTester = new CommandTester($command);
@@ -143,7 +143,8 @@ final class FixtureLoaderTest extends KernelTestCase
             ->addSuite('default', [
                 'fixtures' => $this->createConfiguration('sample_fixture'),
                 'listeners' => [],
-            ]);
+            ])
+        ;
         $this->getLazySuiteRegistry()
             ->addSuite('sample', [
                  'fixtures' => $this->createConfiguration('sample_fixture'),

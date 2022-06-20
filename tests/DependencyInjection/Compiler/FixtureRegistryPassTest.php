@@ -34,7 +34,7 @@ final class FixtureRegistryPassTest extends AbstractCompilerPassTestCase
         $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
             'sylius_fixtures.fixture_registry',
             'addFixture',
-            [new Reference('acme.fixture')]
+            [new Reference('acme.fixture')],
         );
     }
 

@@ -36,7 +36,7 @@ final class HookableFixtureLoaderSpec extends ObjectBehavior
     function it_delegates_fixture_loading_to_the_base_loader(
         FixtureLoaderInterface $decoratedFixtureLoader,
         SuiteInterface $suite,
-        FixtureInterface $fixture
+        FixtureInterface $fixture,
     ): void {
         $suite->getListeners()->willReturn([]);
 
@@ -49,7 +49,7 @@ final class HookableFixtureLoaderSpec extends ObjectBehavior
         FixtureLoaderInterface $decoratedFixtureLoader,
         SuiteInterface $suite,
         FixtureInterface $fixture,
-        BeforeFixtureListenerInterface $beforeFixtureListener
+        BeforeFixtureListenerInterface $beforeFixtureListener,
     ): void {
         $suite->getListeners()->will(function () use ($beforeFixtureListener) {
             yield $beforeFixtureListener->getWrappedObject() => [];
@@ -66,7 +66,7 @@ final class HookableFixtureLoaderSpec extends ObjectBehavior
         FixtureLoaderInterface $decoratedFixtureLoader,
         SuiteInterface $suite,
         FixtureInterface $fixture,
-        AfterFixtureListenerInterface $afterFixtureListener
+        AfterFixtureListenerInterface $afterFixtureListener,
     ): void {
         $suite->getListeners()->will(function () use ($afterFixtureListener) {
             yield $afterFixtureListener->getWrappedObject() => [];
@@ -84,7 +84,7 @@ final class HookableFixtureLoaderSpec extends ObjectBehavior
         SuiteInterface $suite,
         FixtureInterface $fixture,
         BeforeFixtureListenerInterface $beforeFixtureListener,
-        AfterFixtureListenerInterface $afterFixtureListener
+        AfterFixtureListenerInterface $afterFixtureListener,
     ): void {
         $suite->getListeners()->will(function () use ($beforeFixtureListener, $afterFixtureListener) {
             yield $beforeFixtureListener->getWrappedObject() => ['listener_option1' => 'listener_value1'];

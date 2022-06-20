@@ -29,7 +29,7 @@ final class SuiteFactory implements SuiteFactoryInterface
     public function __construct(
         FixtureRegistryInterface $fixtureRegistry,
         ListenerRegistryInterface $listenerRegistry,
-        Processor $optionsProcessor
+        Processor $optionsProcessor,
     ) {
         $this->fixtureRegistry = $fixtureRegistry;
         $this->listenerRegistry = $listenerRegistry;

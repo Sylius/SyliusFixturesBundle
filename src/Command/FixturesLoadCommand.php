@@ -56,7 +56,7 @@ final class FixturesLoadCommand extends Command
 
             $output->writeln(sprintf(
                 "\n<error>Warning! Loading fixtures may purge your database for the %s environment (if `orm_purger` is used in your suite).</error>\n",
-                $this->environment
+                $this->environment,
             ));
 
             if (!$questionHelper->ask($input, $output, new ConfirmationQuestion('Continue? (y/N) ', false))) {
