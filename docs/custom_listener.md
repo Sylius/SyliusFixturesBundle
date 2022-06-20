@@ -12,7 +12,7 @@ use Sylius\Bundle\FixturesBundle\Listener\BeforeSuiteListenerInterface;
 use Sylius\Bundle\FixturesBundle\Listener\SuiteEvent;
 use Symfony\Component\Filesystem\Filesystem;
 
-final class DirectoryPurgerListener extends AbstractListener implements ListenerInterface
+final class DirectoryPurgerListener extends AbstractListener implements BeforeSuiteListenerInterface
 {
     public function getName(): string
     {
