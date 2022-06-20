@@ -63,6 +63,8 @@ final class DirectoryPurgerListener extends AbstractListener implements Listener
 
     protected function configureOptionsNode(ArrayNodeDefinition $optionsNode): void
     {
+        $optionsNodeBuilder = $optionsNode->children();
+
         $optionsNodeBuilder
             ->arrayNode('directories')
                 ->performNoDeepMerging()
