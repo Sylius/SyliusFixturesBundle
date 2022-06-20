@@ -34,7 +34,7 @@ final class ListenerRegistryPassTest extends AbstractCompilerPassTestCase
         $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
             'sylius_fixtures.listener_registry',
             'addListener',
-            [new Reference('acme.listener')]
+            [new Reference('acme.listener')],
         );
     }
 

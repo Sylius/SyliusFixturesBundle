@@ -30,7 +30,8 @@ final class SampleFixture extends AbstractFixture
         $this->entityManager
             ->getConnection()
             ->prepare('INSERT INTO testTable VALUES (?);')
-            ->execute(['test']);
+            ->execute(['test'])
+        ;
     }
 
     public function getName(): string

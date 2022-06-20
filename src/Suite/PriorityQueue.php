@@ -42,7 +42,7 @@ final class PriorityQueue implements \IteratorAggregate
                 \SORT_DESC,
                 array_keys($this->records),
                 \SORT_ASC,
-                $this->records
+                $this->records,
             );
 
             $this->sorted = true;

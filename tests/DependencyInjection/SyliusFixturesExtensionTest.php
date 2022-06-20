@@ -59,14 +59,14 @@ final class SyliusFixturesExtensionTest extends AbstractExtensionTestCase
             'acme.fixture_autoconfigured',
             (new Definition())
                 ->setClass($this->getMockClass(FixtureInterface::class))
-                ->setAutoconfigured(true)
+                ->setAutoconfigured(true),
         );
 
         $this->container->setDefinition(
             'acme.listener_autoconfigured',
             (new Definition())
                 ->setClass($this->getMockClass(ListenerInterface::class))
-                ->setAutoconfigured(true)
+                ->setAutoconfigured(true),
         );
 
         $this->load();
@@ -74,12 +74,12 @@ final class SyliusFixturesExtensionTest extends AbstractExtensionTestCase
 
         $this->assertContainerBuilderHasServiceDefinitionWithTag(
             'acme.fixture_autoconfigured',
-            FixtureRegistryPass::FIXTURE_SERVICE_TAG
+            FixtureRegistryPass::FIXTURE_SERVICE_TAG,
         );
 
         $this->assertContainerBuilderHasServiceDefinitionWithTag(
             'acme.listener_autoconfigured',
-            ListenerRegistryPass::LISTENER_SERVICE_TAG
+            ListenerRegistryPass::LISTENER_SERVICE_TAG,
         );
     }
 

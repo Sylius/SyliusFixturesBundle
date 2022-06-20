@@ -29,7 +29,7 @@ final class ConfigurationTest extends TestCase
     {
         $this->assertConfigurationIsValid(
             [['suites' => ['suite' => ['fixtures' => ['fixture' => null]]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -43,7 +43,7 @@ final class ConfigurationTest extends TestCase
                 'first_suite' => ['fixtures' => ['fixture' => null]],
                 'second_suite' => ['fixtures' => ['fixture' => null]],
             ]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -65,7 +65,7 @@ final class ConfigurationTest extends TestCase
                 'first_suite' => ['fixtures' => ['fixture' => ['name' => 'fixture', 'options' => [[]], 'priority' => 0]]],
                 'second_suite' => ['fixtures' => ['fixture' => ['name' => 'fixture', 'options' => [[]], 'priority' => 0]]],
             ]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -79,7 +79,7 @@ final class ConfigurationTest extends TestCase
                 'first_fixture' => null,
                 'second_fixture' => null,
             ]]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -101,7 +101,7 @@ final class ConfigurationTest extends TestCase
             ['suites' => ['suite' => ['fixtures' => [
                 'first_fixture' => ['name' => 'first_fixture', 'options' => [[]], 'priority' => 0],
             ]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -123,7 +123,7 @@ final class ConfigurationTest extends TestCase
                 'first_fixture' => ['name' => 'first_fixture', 'options' => [[]], 'priority' => 0],
                 'second_fixture' => ['name' => 'second_fixture', 'options' => [[]], 'priority' => 0],
             ]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -144,7 +144,7 @@ final class ConfigurationTest extends TestCase
             ['suites' => ['suite' => ['fixtures' => [
                 'fixture' => ['name' => 'fixture', 'options' => [['option' => 4], ['option' => 2]], 'priority' => 0],
             ]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -165,7 +165,7 @@ final class ConfigurationTest extends TestCase
             ['suites' => ['suite' => ['fixtures' => [
                 'fixture' => ['name' => 'fixture', 'options' => [['option' => 4]], 'priority' => 0],
             ]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -178,14 +178,14 @@ final class ConfigurationTest extends TestCase
             [['suites' => ['suite' => ['fixtures' => ['fixture' => [
                 'options' => 42,
             ]]]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
 
         $this->assertPartialConfigurationIsInvalid(
             [['suites' => ['suite' => ['fixtures' => ['fixture' => [
                 'options' => 'string string',
             ]]]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -202,7 +202,7 @@ final class ConfigurationTest extends TestCase
                 'options' => [['nested' => ['key' => 'value']]],
                 'name' => 'fixture', // FIXME: something is wrong inside the test library and it's not excluded
             ]]]]],
-            'suites.*.fixtures.*.options'
+            'suites.*.fixtures.*.options',
         );
     }
 
@@ -215,14 +215,14 @@ final class ConfigurationTest extends TestCase
             [['suites' => ['suite' => ['listeners' => ['listener' => [
                 'options' => 42,
             ]]]]]],
-            'suites.*.listeners'
+            'suites.*.listeners',
         );
 
         $this->assertPartialConfigurationIsInvalid(
             [['suites' => ['suite' => ['listeners' => ['listener' => [
                 'options' => 'string string',
             ]]]]]],
-            'suites.*.listeners'
+            'suites.*.listeners',
         );
     }
 
@@ -238,7 +238,7 @@ final class ConfigurationTest extends TestCase
             ['suites' => ['suite' => ['listeners' => ['listener' => [
                 'options' => [['nested' => ['key' => 'value']]],
             ]]]]],
-            'suites.*.listeners.*.options'
+            'suites.*.listeners.*.options',
         );
     }
 
@@ -260,7 +260,7 @@ final class ConfigurationTest extends TestCase
             ['suites' => ['suite' => ['listeners' => [
                 'first_listener' => ['options' => [[]], 'priority' => 0],
             ]]]],
-            'suites.*.listeners'
+            'suites.*.listeners',
         );
     }
 
@@ -282,7 +282,7 @@ final class ConfigurationTest extends TestCase
                 'first_listener' => ['options' => [[]], 'priority' => 0],
                 'second_listener' => ['options' => [[]], 'priority' => 0],
             ]]]],
-            'suites.*.listeners'
+            'suites.*.listeners',
         );
     }
 
@@ -302,7 +302,7 @@ final class ConfigurationTest extends TestCase
                 'admin_user' => ['name' => 'user', 'options' => [['admin' => true]], 'priority' => 0],
                 'regular_user' => ['name' => 'user', 'options' => [['admin' => false]], 'priority' => 0],
             ]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 
@@ -324,7 +324,7 @@ final class ConfigurationTest extends TestCase
                 'admin_user' => ['name' => 'user', 'options' => [['admin' => true]], 'priority' => 0],
                 'regular_user' => ['name' => 'user', 'options' => [['admin' => false]], 'priority' => 0],
             ]]]],
-            'suites.*.fixtures'
+            'suites.*.fixtures',
         );
     }
 

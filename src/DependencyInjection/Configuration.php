@@ -120,7 +120,7 @@ final class Configuration implements ConfigurationInterface
                     /** @param mixed $value */
                     static function ($value): array {
                         return [$value];
-                    }
+                    },
                 )
         ;
 

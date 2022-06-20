@@ -65,7 +65,7 @@ final class SuiteSpec extends ObjectBehavior
     function it_keeps_the_priority_of_fixtures(
         FixtureInterface $regularFixture,
         FixtureInterface $higherPriorityFixture,
-        FixtureInterface $lowerPriorityFixture
+        FixtureInterface $lowerPriorityFixture,
     ): void {
         $this->addFixture($regularFixture, []);
         $this->addFixture($higherPriorityFixture, [], 10);

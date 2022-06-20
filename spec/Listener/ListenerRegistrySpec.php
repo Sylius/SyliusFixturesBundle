@@ -37,7 +37,7 @@ final class ListenerRegistrySpec extends ObjectBehavior
 
     function it_throws_an_exception_if_trying_to_another_listener_with_the_same_name(
         ListenerInterface $listener,
-        ListenerInterface $anotherListener
+        ListenerInterface $anotherListener,
     ): void {
         $listener->getName()->willReturn('listener_name');
         $anotherListener->getName()->willReturn('listener_name');

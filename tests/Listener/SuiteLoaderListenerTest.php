@@ -41,7 +41,7 @@ final class SuiteLoaderListenerTest extends TestCase
     {
         return new SuiteLoaderListener(
             $this->getMockBuilder(SuiteRegistryInterface::class)->getMock(),
-            $this->getMockBuilder(SuiteLoaderInterface::class)->getMock()
+            $this->getMockBuilder(SuiteLoaderInterface::class)->getMock(),
         );
     }
 }
