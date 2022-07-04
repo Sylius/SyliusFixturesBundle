@@ -26,7 +26,13 @@ final class DirectoryPurgerListener extends AbstractListener implements BeforeSu
 }
 ```
 
-The next step is to register this listener:
+If you want to listen to different/more event(s) instead of BeforeSuiteListenerInterface implement one or more of those interfaces:
+- AfterFixtureListenerInterface
+- AfterSuiteListenerInterface
+- BeforeFixtureListenerInterface
+- BeforeSuiteListenerInterface
+
+The next step is to register this listener ( you can avoid this step when using autoconfiguration ):
 
 ```xml
 <service id="app.listener.directory_purger" class="App\Fixture\DirectoryPurgerListener">
