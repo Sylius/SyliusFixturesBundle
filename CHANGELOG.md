@@ -1,3 +1,17 @@
+## CHANGELOG FOR `1.8.x`
+
+### v1.8.0-BETA.1 (2022-09-14)
+
+- [#40](https://github.com/Sylius/SyliusFixturesBundle/issues/40) Update vimeo/psalm requirement from 4.1.1 to 4.2.1 ([@dependabot-preview](https://github.com/dependabot-preview)[[@bot](https://github.com/bot)])
+- [#58](https://github.com/Sylius/SyliusFixturesBundle/issues/58) Update custom listener documentation ([@maciekpaprocki](https://github.com/maciekpaprocki))
+- [#68](https://github.com/Sylius/SyliusFixturesBundle/issues/68) Drop support for PHP7.4, Symfony version upgraded to 5.4 ([@Rafikooo](https://github.com/Rafikooo))
+- [#70](https://github.com/Sylius/SyliusFixturesBundle/issues/70) Add support for Symfony 6.0 ([@0lukas](https://github.com/0lukas))
+- [#71](https://github.com/Sylius/SyliusFixturesBundle/issues/71) Remove Symfony 4 support ([@loic425](https://github.com/loic425))
+- [#74](https://github.com/Sylius/SyliusFixturesBundle/issues/74) [DX] Run ECS ([@GSadee](https://github.com/GSadee))
+- [#75](https://github.com/Sylius/SyliusFixturesBundle/issues/75) [Documentation] Add missing line in creating custom listener docs ([@GSadee](https://github.com/GSadee))
+- [#76](https://github.com/Sylius/SyliusFixturesBundle/issues/76) Update custom listener ([@AdamKasp](https://github.com/AdamKasp))
+- [#77](https://github.com/Sylius/SyliusFixturesBundle/issues/77) Enable flex in global composer to fix the build ([@Zales0123](https://github.com/Zales0123))
+
 ## CHANGELOG FOR `1.7.x`
 
 ### v1.7.0 (2020-11-05)
