@@ -1,6 +1,6 @@
 | Q               | A
 | --------------- | -----
-| Branch?         | 1.8
+| Branch?         | 1.8 (bug fixes, minor improvements) or 1.9 (new features)
 | Bug fix?        | no/yes
 | New feature?    | no/yes
 | BC breaks?      | no/yes
