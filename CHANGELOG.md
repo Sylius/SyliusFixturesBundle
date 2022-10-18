@@ -1,5 +1,12 @@
 ## CHANGELOG FOR `1.8.x`
 
+## v1.8.0 (2022-10-18)
+
+- [#59](https://github.com/Sylius/SyliusFixturesBundle/issues/59) Upgrade to GitHub-native Dependabot ([@dependabot-preview](https://github.com/dependabot-preview)[[@bot](https://github.com/bot)])
+- [#78](https://github.com/Sylius/SyliusFixturesBundle/issues/78) Allow to run build manually ([@Zales0123](https://github.com/Zales0123))
+- [#79](https://github.com/Sylius/SyliusFixturesBundle/issues/79) Update PR template ([@Zales0123](https://github.com/Zales0123))
+- [#80](https://github.com/Sylius/SyliusFixturesBundle/issues/80) Update rector/rector requirement from ^0.11.57 to ^0.14.5 ([@dependabot](https://github.com/dependabot)[[@bot](https://github.com/bot)])
+
 ### v1.8.0-BETA.1 (2022-09-14)
 
 - [#40](https://github.com/Sylius/SyliusFixturesBundle/issues/40) Update vimeo/psalm requirement from 4.1.1 to 4.2.1 ([@dependabot-preview](https://github.com/dependabot-preview)[[@bot](https://github.com/bot)])
