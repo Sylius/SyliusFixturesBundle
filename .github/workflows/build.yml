@@ -22,10 +22,6 @@ jobs:
                 dbal: ["^3.0"]
                 include:
                     -
-                        php: "8.3"
-                        symfony: "^8.0"
-                        dbal: "^4.0"
-                    -
                         php: "8.4"
                         symfony: "^8.0"
                         dbal: "^4.0"
