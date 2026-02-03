@@ -24,3 +24,7 @@ parameters:
         - '/Static property .*\:\:\$container \(.*\\Test\\TestContainer\) does not accept Symfony\\Component\\DependencyInjection\\ContainerInterface\./'
         - '/PHPDoc tag \@var for variable \$manager contains unknown class Doctrine\\ODM\\MongoDB\\DocumentManager\./'
         - '/PHPDoc tag \@var for variable \$manager contains unknown class Doctrine\\ODM\\PHPCR\\DocumentManagerInterface\./'
+        - '/PHPDoc tag \@var with type Doctrine\\ODM\\MongoDB\\DocumentManager is not subtype of native type/'
+        - '/PHPDoc tag \@var with type Doctrine\\ODM\\PHPCR\\DocumentManagerInterface is not subtype of native type/'
+        - '/Call to static method Webmozart\\Assert\\Assert::\w+\(\) .* will always evaluate to true\./'
+        - '/PHPDoc tag \@var with type .* is not subtype of native type .*MockObject\./'

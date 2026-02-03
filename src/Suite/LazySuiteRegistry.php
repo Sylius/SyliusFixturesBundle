@@ -18,7 +18,7 @@ final class LazySuiteRegistry implements SuiteRegistryInterface
     /** @var array<string, array<mixed>> */
     private array $suiteDefinitions = [];
 
-    /** @var array<string, SuiteInterface>> */
+    /** @var array<string, SuiteInterface> */
     private array $suites = [];
 
     public function __construct(private SuiteFactoryInterface $suiteFactory)
