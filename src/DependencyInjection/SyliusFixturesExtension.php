@@ -21,7 +21,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 final class SyliusFixturesExtension extends Extension implements PrependExtensionInterface
@@ -36,9 +36,9 @@ final class SyliusFixturesExtension extends Extension implements PrependExtensio
     public function load(array $configs, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
-        $loader->load('services.xml');
+        $loader->load('services.php');
 
         $this->registerSuites($config, $container);
 
@@ -54,12 +54,12 @@ final class SyliusFixturesExtension extends Extension implements PrependExtensio
 
     public function prepend(ContainerBuilder $container): void
     {
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         $extensionsNamesToConfigurationFiles = [
-            'doctrine' => 'doctrine/orm.xml',
-            'doctrine_mongodb' => 'doctrine/mongodb-odm.xml',
-            'doctrine_phpcr' => 'doctrine/phpcr-odm.xml',
+            'doctrine' => 'doctrine/orm.php',
+            'doctrine_mongodb' => 'doctrine/mongodb-odm.php',
+            'doctrine_phpcr' => 'doctrine/phpcr-odm.php',
         ];
 
         foreach ($extensionsNamesToConfigurationFiles as $extensionName => $configurationFile) {
