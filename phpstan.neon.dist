@@ -28,3 +28,5 @@ parameters:
         - '/PHPDoc tag \@var with type Doctrine\\ODM\\PHPCR\\DocumentManagerInterface is not subtype of native type/'
         - '/Call to static method Webmozart\\Assert\\Assert::\w+\(\) .* will always evaluate to true\./'
         - '/PHPDoc tag \@var with type .* is not subtype of native type .*MockObject\./'
+        - '/Call to function method_exists\(\) with Symfony\\Bundle\\FrameworkBundle\\Console\\Application and .addCommand. will always evaluate to (true|false)\./'
+        - '/Call to an undefined method Symfony\\Bundle\\FrameworkBundle\\Console\\Application\:\:add\(\)\./'
