@@ -50,11 +50,16 @@ final class FixtureListCommandTest extends KernelTestCase
         ;
 
         $application = new Application(self::$kernel);
-        $application->add(new FixturesLoadCommand(
+        $command = new FixturesLoadCommand(
             $suiteRegistry,
             self::$container->get('sylius_fixtures.suite_loader'),
             self::$container->getParameter('kernel.environment'),
-        ));
+        );
+        if (method_exists($application, 'addCommand')) {
+            $application->addCommand($command);
+        } else {
+            $application->add($command);
+        }
         $command = $application->find('sylius:fixtures:list');
         $this->commandTester = new CommandTester($command);
     }

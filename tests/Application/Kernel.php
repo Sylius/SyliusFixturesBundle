@@ -27,7 +27,7 @@ final class Kernel extends HttpKernel
         ];
     }
 
-    public function registerContainerConfiguration(LoaderInterface $loader)
+    public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__ . '/config/config.yml');
     }
