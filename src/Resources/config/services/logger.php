@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Monolog\Level;
 use Monolog\Logger;
 use Symfony\Bridge\Monolog\Formatter\ConsoleFormatter;
 use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
@@ -34,7 +33,7 @@ return static function (ContainerConfigurator $container) {
         ->args([
             null,
             true,
-            ['32' => Level::Notice, '64' => Level::Info],
+            ['32' => Logger::NOTICE, '64' => Logger::INFO],
         ])
         ->tag('kernel.event_subscriber')
         ->call('setFormatter', [service('sylius_fixtures.logger.formatter.console')]);
