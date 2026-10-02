@@ -12,7 +12,7 @@ You need to enable the bundle inside the kernel.
 # config/bundles.php
 
 return [
-    \Sylius\Bundle\ThemeBundle\SyliusFixturesBundle::class => ['all' => true],
+    \Sylius\Bundle\FixturesBundle\SyliusFixturesBundle::class => ['all' => true],
 ];
 ```
 
