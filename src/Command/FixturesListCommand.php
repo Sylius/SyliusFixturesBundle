@@ -15,10 +15,12 @@ namespace Sylius\Bundle\FixturesBundle\Command;
 
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureRegistryInterface;
 use Sylius\Bundle\FixturesBundle\Suite\SuiteRegistryInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'sylius:fixtures:list', description: 'Lists available fixtures')]
 final class FixturesListCommand extends Command
 {
     public function __construct(
@@ -26,14 +28,6 @@ final class FixturesListCommand extends Command
         private FixtureRegistryInterface $fixtureRegistry,
     ) {
         parent::__construct(null);
-    }
-
-    protected function configure(): void
-    {
-        $this
-            ->setName('sylius:fixtures:list')
-            ->setDescription('Lists available fixtures')
-        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

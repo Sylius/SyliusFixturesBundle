@@ -15,6 +15,7 @@ namespace Sylius\Bundle\FixturesBundle\Command;
 
 use Sylius\Bundle\FixturesBundle\Loader\SuiteLoaderInterface;
 use Sylius\Bundle\FixturesBundle\Suite\SuiteRegistryInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputArgument;
@@ -22,6 +23,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 
+#[AsCommand(name: 'sylius:fixtures:load', description: 'Loads fixtures from given suite')]
 final class FixturesLoadCommand extends Command
 {
     public function __construct(
@@ -35,8 +37,6 @@ final class FixturesLoadCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setName('sylius:fixtures:load')
-            ->setDescription('Loads fixtures from given suite')
             ->addArgument('suite', InputArgument::OPTIONAL, 'Suite name', 'default')
         ;
     }
